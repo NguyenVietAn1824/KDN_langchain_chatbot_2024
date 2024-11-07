@@ -46,7 +46,7 @@ if "llm" not in st.session_state:
     # Load retrievers
     
     st.session_state.retriever = st.session_state.db.as_retriever(
-        search_type="similarity", search_kwargs={"k": 4})
+        search_type="similarity", search_kwargs={"k": 2})
     st.session_state.keyword_retriever = BM25Retriever.from_documents(
         data, k=2)
     st.session_state.ensemble_retriever = EnsembleRetriever(

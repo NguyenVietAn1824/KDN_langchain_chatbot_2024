@@ -23,8 +23,8 @@ def get_llm(model_name: str = "gemma2:2b", use_api: bool = False):
 
     llm = ChatOllama(model=model_name, temperature=0.1)
     messages = [
-        ("system", "You are a helpful AI assistant."),
-        ("human", "hi"),
+        ("system", "Bạn là Chatbot Tiếng Việt."),
+        ("human", "Xin chào"),
     ]
     response_init = llm.invoke(messages)
     return llm, response_init
@@ -73,8 +73,8 @@ def chain_query(llm, history_retriever, user_question: str, session_id: str = "a
 
 def get_history_aware_chain(llm, retriever):
     contextualize_q_system_prompt = """
-    Dựa vào lịch sử trò chuyện và câu hỏi gần nhất của người dùng, có thể tham khảo đến ngữ cảnh trong cuộc trò chuyện trước đó, hãy chuyển đổi câu hỏi thành một câu hỏi độc lập, dễ hiểu mà không cần tham chiếu đến lịch sử.
-
+    Tập trung chính vào câu hỏi hiện tại, lịch sử chỉ mang yếu tố tham khảo nhỏ, không tóm tắt quá nhiều lịch sử vào câu hỏi chính.
+    Dựa vào lịch sử trò chuyện trước đó và câu hỏi gần nhất của người dùng, hãy chuyển đổi câu hỏi thành một câu hỏi độc lập,không truy vấn đến lịch sử trò truyện.
     """
     contextualize_q_prompt = ChatPromptTemplate.from_messages(
         [
