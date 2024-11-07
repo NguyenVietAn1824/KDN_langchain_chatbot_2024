@@ -16,7 +16,6 @@ from src.semantic_router.sample import productsSample,chitchatSample
 from dotenv import load_dotenv
 
 from langchain_community.embeddings import OpenAIEmbeddings
-import openai
 from pathlib import Path
 from typing import List
 from sentence_transformers import SentenceTransformer
@@ -47,7 +46,7 @@ if "llm" not in st.session_state:
     # Load retrievers
     
     st.session_state.retriever = st.session_state.db.as_retriever(
-        search_type="similarity", search_kwargs={"k": 2})
+        search_type="similarity", search_kwargs={"k": 4})
     st.session_state.keyword_retriever = BM25Retriever.from_documents(
         data, k=2)
     st.session_state.ensemble_retriever = EnsembleRetriever(
@@ -93,8 +92,7 @@ def main():
         guidedRoute = semanticRouter.guide(query)[0]
         st.session_state.history.append(HumanMessage(user_query))
 
-        if guidedRoute >= 0.12:
-            
+        if guidedRoute >= 0.5:
             history.append("user:" + str(user_query))
             for segment in chain_query(st.session_state.llm, st.session_state.history_aware_chain, user_query, str(st.session_state.session_id)):
                 if "answer" in segment:
