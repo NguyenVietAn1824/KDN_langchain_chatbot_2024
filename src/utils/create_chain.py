@@ -74,7 +74,7 @@ def chain_query(llm, history_retriever, user_question: str, session_id: str = "a
 def get_history_aware_chain(llm, retriever):
     contextualize_q_system_prompt = """
     Dựa vào lịch sử trò chuyện và câu hỏi gần nhất của người dùng, có thể tham khảo đến ngữ cảnh trong cuộc trò chuyện trước đó, hãy chuyển đổi câu hỏi thành một câu hỏi độc lập, dễ hiểu mà không cần tham chiếu đến lịch sử.
-    KHÔNG trả lời câu hỏi, chỉ cần định dạng lại nếu cần thiết, nếu không thì giữ nguyên như vậy.
+
     """
     contextualize_q_prompt = ChatPromptTemplate.from_messages(
         [
