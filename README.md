@@ -1,1 +1,1 @@
-## BUILD RAG APPLICATION USING LANGCHAIN WITH ADVANCED SKILL
+## Build a RAG application using Langchain with advanced skills
