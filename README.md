@@ -25,3 +25,19 @@ This project implements the Retrieval-Augmented Generation (RAG) model using Lan
 6. Run Project
    ```bash
    streamlit run app.py
+
+## PipeLine
+
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1B2uuPGstZ87rDzVufZu8o46oYC1XNdev" alt="Description of Image">
+</div>
+
+- **User Query**:  Input is the user's question.
+
+- **Chat History**:  Summarizes the previous history of the conversation and adds it to the current question.
+
+- **Semantic Router**:  Provides semantic orientation for user questions.
+
+- **RAGs System**:   Uses semantic and keyword retrieval to increase searchability.
+
+- **LLM**:  Uses `gemma:2b` to generate the final answer.
